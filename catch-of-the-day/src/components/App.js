@@ -66,6 +66,7 @@ class App extends React.Component {
     fishes[key] = updatedFish;
     this.setState({ fishes });
   }
+
   removeFish(key) {
     const fishes = {...this.state.fishes};
     fishes[key] = null;
@@ -87,16 +88,11 @@ class App extends React.Component {
     this.setState({ order });
   }
 
-removeFromOrder(key) {
-  const order = {...this.state.order};
-  delete order[key];
-  this.setState({ order });
-}
-
-
-
-
-
+  removeFromOrder(key) {
+    const order = {...this.state.order};
+    delete order[key];
+    this.setState({ order });
+  }
 
   render() {
     return (
@@ -123,10 +119,15 @@ removeFromOrder(key) {
           loadSamples={this.loadSamples}
           fishes={this.state.fishes}
           updateFish={this.updateFish}
+          storeId={this.props.params.storeId}
         />
       </div>
     )
   }
+}
+
+App.propTypes = {
+  params: React.PropTypes.object.isRequired
 }
 
 export default App;
